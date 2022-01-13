@@ -13,14 +13,14 @@ namespace System
         public static ProjectFileSpecification GetProjectFileSpecification(this IProjectOperator _,
             string projectName,
             string projectDescription,
-            string parentDirectoryPath,
+            string projectDirectoryParentDirectoryPath,
             string[] projectReferenceFilePaths = default,
             string[] dependencyProjectReferenceFilePaths = default)
         {
             var projectDocumentation = projectDescription; // Reuse the description.
             var projectDefaultNamespaceName = Instances.ProjectNameOperator.GetDefaultNamespaceNameFromProjectName(projectName);
 
-            var projectDirectoryPath = Instances.ProjectPathsOperator.GetProjectDirectoryPath(parentDirectoryPath, projectName);
+            var projectDirectoryPath = Instances.ProjectPathsOperator.GetProjectDirectoryPath(projectDirectoryParentDirectoryPath, projectName);
             var projectFilePath = Instances.ProjectPathsOperator.GetProjectFilePath(projectDirectoryPath, projectName);
 
             var output = new ProjectFileSpecification
